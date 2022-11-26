@@ -1,13 +1,13 @@
 // TODO: Update the name of the method loaded by the prover. E.g., if the method is `multiply`, replace `METHOD_NAME_ID` with `MULTIPLY_ID` and replace `METHOD_NAME_PATH` with `MULTIPLY_PATH`
-use methods::{BLS_ID, BLS_PATH};
+use methods::{PROOF_OF_PNG_ID, PROOF_OF_PNG_PATH};
 use risc0_zkvm::host::Prover;
 // use risc0_zkvm::serde::{from_slice, to_vec};
 
 fn main() {
     // Make the prover.
-    let method_code = std::fs::read(BLS_PATH)
+    let method_code = std::fs::read(PROOF_OF_PNG_PATH)
         .expect("Method code should be present at the specified path; did you use the correct *_PATH constant?");
-    let mut prover = Prover::new(&method_code, BLS_ID)
+    let mut prover = Prover::new(&method_code, PROOF_OF_PNG_ID)
         .expect("Prover should be constructed from valid method source code and corresponding method ID");
 
     // TODO: Implement communication with the guest here
@@ -20,7 +20,7 @@ fn main() {
     // println!("Receipt: {}", receipt.get_seal());
 
     // Optional: Verify receipt to confirm that recipients will also be able to verify your receipt
-    receipt.verify(BLS_ID)
+    receipt.verify(PROOF_OF_PNG_ID)
         .expect("Code you have proven should successfully verify; did you specify the correct method ID?");
 
     // TODO: Implement code for transmitting or serializing the receipt for other parties to verify here
